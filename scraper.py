@@ -20,12 +20,15 @@ def get_prices(price_boxes):
     index = 0
     for box in price_boxes:
         if "Montréal, QC" not in box.find("div", class_="StationDisplay-module__address___2_c7v").text: continue
-        index += 1
         station_elem = box.find("a")
         station = station_elem.text
         price_elem = box.find("span", class_="text__xl___2MXGo text__left___1iOw3 StationDisplayPrice-module__price___3rARL")
         price = price_elem.text
-        station_and_prices[f"gas_station{index}"] = station+" "+price
+        station_and_prices[index] = {
+            "gas_station": station,
+            "price": price
+        }
+        index += 1
     return station_and_prices
 
 
