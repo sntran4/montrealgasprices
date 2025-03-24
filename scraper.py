@@ -19,7 +19,6 @@ def get_prices(price_boxes):
     station_and_prices = {}
     index = 0
     for box in price_boxes:
-        if "Montréal, QC" not in box.find("div", class_="StationDisplay-module__address___2_c7v").text: continue
         station_elem = box.find("a")
         station = station_elem.text
         price_elem = box.find("span", class_="text__xl___2MXGo text__left___1iOw3 StationDisplayPrice-module__price___3rARL")
